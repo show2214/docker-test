@@ -1,5 +1,5 @@
 # Base image
-FROM jupyter/base-notbook
+FROM jupyter/base-notebook
 
 # Maintainer
 LABEL maintainer "Sho Sawada"
@@ -15,7 +15,7 @@ RUN conda install --quiet --yes \
     'sympy=1.1.*' \
     'matplotlib=2.1.*' \
     && conda clean -tipsy && \
-    fix-permissions &CONDA_DIR
+    fix-permissions $CONDA_DIR
 
 # Install Sample Notebook
 COPY sample_notebook/CavityFlow_with_Navier-Stokes.ipynb /home/$NB_USER/
